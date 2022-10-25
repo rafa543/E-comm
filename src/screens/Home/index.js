@@ -1,15 +1,17 @@
-import { View, Text, TextInput, Image } from "react-native";
+import { View, Text, TextInput, Image, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
 import { StatusBar } from 'expo-status-bar';
 import { Category } from "../../components/Category";
+import { ListProduct } from "../../components/ListProduct";
 import { categories } from "../../utils/categories";
+import { ScrollView } from "react-native-gesture-handler";
 
 export function Home() {
     const style = styles()
     const number = '2'
     return (
-        <View style={style.container}>
-            <StatusBar backgroundColor="white"/>
+        <ScrollView style={style.container}>
+            <StatusBar backgroundColor="white" />
             <View style={style.header}>
                 <View>
                     <TextInput
@@ -24,19 +26,31 @@ export function Home() {
             </View>
 
             <Category />
-            
+
             <View>
-                <View>
-                    <Text>Flash Sale</Text>
-                    <Text>See More</Text>
+                <View style={style.containerText}>
+                    <Text style={style.textCategory}>Flash Sale</Text>
+                    <TouchableOpacity><Text style={style.textCategoryMais}>See More</Text></TouchableOpacity>
                 </View>
 
                 <View>
-                    {/* <ListProduct/> */}
+                    <ListProduct/>
+                </View>
+            </View>
+
+            <View>
+                <View style={style.containerText}>
+                    <Text style={style.textCategory}>Flash Sale</Text>
+                    <TouchableOpacity><Text style={style.textCategoryMais}>See More</Text></TouchableOpacity>
+                </View>
+
+                <View>
+                    <ListProduct/>
                 </View>
             </View>
             
-        </View>
+
+        </ScrollView>
     )
 }
 

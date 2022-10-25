@@ -35,6 +35,23 @@ export const styles = () => {
         notification: {
             width: 25,
             height: 25
-        }
+        },
+        containerText: {
+            marginTop: 10,
+            marginHorizontal: 18,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+        },
+        textCategory: {
+            fontSize: 18,
+            fontWeight: 'bold',
+            color: '#223263',
+        },
+        textCategoryMais: {
+            fontSize: 18,
+            fontWeight: 'bold',
+            color: '#40bfff'
+        },
     })
 }
