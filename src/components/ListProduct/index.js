@@ -8,15 +8,14 @@ const DATA = [
         id: '1',
         title: 'FS - Nike Air Max 270 React',
         image:
-            'https://fieroshop.vteximg.com.br/arquivos/ids/172882-500-500/tenis-knit-masculino-cinza-maleavel-.jpg?v=637835541402230000',
+            'https://github.com/rafa543/E-comm/blob/main/src/assets/produtos/tenis1.jpg?raw=true',
         preco: '$299,70',
         oldPreco: '$534,33',
     },
     {
         id: '2',
         title: 'Quilted Maxi Cros',
-        image:
-            'https://d87n9o45kphpy.cloudfront.net/Custom/Content/Products/25/85/2585197_tenis-moleca-flatform-detalhe-trama-branco-5170963_s4_637825251979298126.jpg',
+        image:'https://github.com/rafa543/E-comm/blob/main/src/assets/produtos/tenis2.png?raw=true',
         preco: '$299,70',
         oldPreco: '$534,33',
     },
@@ -31,7 +30,7 @@ const DATA = [
     {
         id: '4',
         title: 'Chuteira Futsal Nike Beco 2 - Adulto',
-        image: 'https://imgcentauro-a.akamaihd.net/230x230/9714725G.jpg',
+        image: 'https://github.com/rafa543/E-comm/blob/main/src/assets/produtos/bolsa.png?raw=true',
         preco: '$299,70',
         oldPreco: '$534,33',
     },
@@ -46,7 +45,7 @@ const DATA = [
     {
         id: '6',
         title: 'Tênis Nike ZoomX Invincible Run Flyknit 2',
-        image: 'https://imgcentauro-a.akamaihd.net/230x230/97306631.jpg',
+        image: 'https://d87n9o45kphpy.cloudfront.net/Custom/Content/Products/25/85/2585197_tenis-moleca-flatform-detalhe-trama-branco-5170963_s4_637825251979298126.jpg',
         preco: '$299,70',
         oldPreco: '$534,33',
     },
@@ -70,6 +69,6 @@ export function ListProduct() {
 
 
     return (
-        <FlatList data={DATA} style={style.container} showsHorizontalScrollIndicator={false} horizontal renderItem={renderItem} keyExtractor={item => item.id} />
+        <FlatList data={DATA.reverse()} style={style.container} showsHorizontalScrollIndicator={false} horizontal renderItem={renderItem} keyExtractor={item => item.id} />
     )
 }

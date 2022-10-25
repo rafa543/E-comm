@@ -1,14 +1,17 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
+import React from 'react';
 
 export const styles = () => {
     return StyleSheet.create({
         container: {
             flex: 1,
-            paddingTop: 60,
-            backgroundColor: 'white'
+            // paddingTop: 60,
+            marginTop: StatusBar.currentHeight || 0,
+            backgroundColor: 'white',
         },
         header: {
             marginHorizontal: 18,
+            marginTop: 20,
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between'
@@ -35,6 +38,9 @@ export const styles = () => {
         notification: {
             width: 25,
             height: 25
+        },
+        scrolls: {
+            marginBottom: 20
         },
         containerText: {
             marginTop: 10,

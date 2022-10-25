@@ -27,7 +27,7 @@ export function Home() {
 
             <Category />
 
-            <View>
+            <View style={style.scrolls}>
                 <View style={style.containerText}>
                     <Text style={style.textCategory}>Flash Sale</Text>
                     <TouchableOpacity><Text style={style.textCategoryMais}>See More</Text></TouchableOpacity>
@@ -38,7 +38,7 @@ export function Home() {
                 </View>
             </View>
 
-            <View>
+            <View style={style.scrolls}> 
                 <View style={style.containerText}>
                     <Text style={style.textCategory}>Flash Sale</Text>
                     <TouchableOpacity><Text style={style.textCategoryMais}>See More</Text></TouchableOpacity>
