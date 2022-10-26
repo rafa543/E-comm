@@ -15,7 +15,7 @@ export const styles = () => {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between'
-        },  
+        },
         input: {
             width: 263,
             height: 46,
@@ -58,6 +58,31 @@ export const styles = () => {
             fontSize: 18,
             fontWeight: 'bold',
             color: '#40bfff'
+        },
+        containerBanner: {
+                marginHorizontal: 16,
+                marginTop: 10,
+                marginBottom: 20
+        },
+        banner: {
+            width: '100%',
+            height: 206,
+        },
+        bannerContent: {
+            flex: 1,
+            justifyContent: 'center',
+            paddingHorizontal: 24,
+        },
+        title: {
+            fontSize: 28,
+            color:  'white',
+            fontWeight: 'bold',
+            marginBottom: 16
+        },
+        subtitle: {
+            fontSize: 13,
+            color:  'white',
+            lineHeight: 21
         },
     })
 }

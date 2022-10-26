@@ -7,11 +7,11 @@ export const styles = () => {
         },
         item: {
             flex: 1,
-            paddingHorizontal: 16,
+            paddingHorizontal: 10,
             borderRadius: 15,
             paddingTop: 16,
             // margin: 10,
-            marginRight: 20,
+            marginRight: 16,
             marginTop: 20,
             borderColor: '#EBF0FF',
             borderWidth: 2,

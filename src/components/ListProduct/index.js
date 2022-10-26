@@ -15,7 +15,7 @@ const DATA = [
     {
         id: '2',
         title: 'Quilted Maxi Cros',
-        image:'https://github.com/rafa543/E-comm/blob/main/src/assets/produtos/tenis2.png?raw=true',
+        image: 'https://github.com/rafa543/E-comm/blob/main/src/assets/produtos/tenis2.png?raw=true',
         preco: '$299,70',
         oldPreco: '$534,33',
     },
@@ -53,7 +53,7 @@ const DATA = [
 
 const Item = ({ data }) => (
     <TouchableOpacity style={style.item}>
-        <Image style={style.image} source={{uri:data.image}}/>
+        <Image style={style.image} source={{ uri: data.image }} />
         {/* <Image style={style.image} source={require('../../assets/produtos/tenis1.jpg')}/> */}
         <Text style={style.title}>{data.title}</Text>
         <Text style={style.price}>{data.preco}</Text>
@@ -64,11 +64,26 @@ const Item = ({ data }) => (
     </TouchableOpacity>
 );
 
-export function ListProduct() {
+export function ListProduct({ horizontalOrVertical }) {
     const renderItem = ({ item }) => <Item data={item} />;
+    const horizontal = horizontalOrVertical === 'horizontal'
 
 
-    return (
-        <FlatList data={DATA.reverse()} style={style.container} showsHorizontalScrollIndicator={false} horizontal renderItem={renderItem} keyExtractor={item => item.id} />
-    )
+    if (horizontal) {
+        return (
+            <FlatList data={DATA.reverse()} style={style.container} showsHorizontalScrollIndicator={false} horizontal renderItem={renderItem} keyExtractor={item => item.id} />
+        )
+    }else{
+
+        return (
+            <FlatList 
+                data={DATA.reverse()} 
+                style={[style.container, {marginRight: 0,}]} 
+                showsHorizontalScrollIndicator={false} 
+                numColumns={2} 
+                renderItem={renderItem} 
+                keyExtractor={item => item.id} 
+            />
+        )
+    }
 }
