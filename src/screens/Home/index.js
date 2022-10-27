@@ -1,14 +1,15 @@
-import { View, Text, TextInput, Image, TouchableOpacity, ImageBackground } from "react-native";
+import { View, Text, TextInput, Image, TouchableOpacity, ImageBackground, FlatList } from "react-native";
 import { styles } from "./styles";
 import { StatusBar } from 'expo-status-bar';
 import { Category } from "../../components/Category";
 import { ListProduct } from "../../components/ListProduct";
-import { categories } from "../../utils/categories";
 import { ScrollView } from "react-native-gesture-handler";
 
 export function Home() {
+    const renderItem = ({ item}) => <ItemProduct data={item} teste={'teste'}/>;
     const style = styles()
     const number = '2'
+
     return (
         <ScrollView style={style.container}>
             <StatusBar backgroundColor="white" />
@@ -34,7 +35,7 @@ export function Home() {
                 </View>
 
                 <View>
-                    <ListProduct horizontalOrVertical={"horizontal"}/>
+                    <ListProduct horizontalOrVertical={"horizontal"} />
                 </View>
             </View>
 
@@ -60,7 +61,7 @@ export function Home() {
             </View>
 
             <View>
-                <ListProduct horizontalOrVertical={"vertical"}/>
+                <ListProduct horizontalOrVertical={"vertical"} />
             </View>
 
         </ScrollView>

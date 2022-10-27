@@ -1,20 +1,30 @@
 import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Home } from '../screens/Home';
+import { Produto } from '../screens/Produto';
+import Rotas from './tab.routes';
+
+
 
 const stackRoutes = createStackNavigator();
 
-export default StackRoutes()(
+
+export default function StackRoutes() {
     return (
-        <stackRoutes.Navigator
-            screenOptions={{
-                cardStyle: { backgroundColor: colors.white },
-            }}
-        >
-            <stackRoutes.Screen
-                name="Home"
-                component={Home}
-                options={{ headerTitle: '' }}
-            />
-        </stackRoutes.Navigator>
+        <NavigationContainer>
+            <stackRoutes.Navigator>
+                <stackRoutes.Screen
+                    name="Home"
+                    component={Rotas}
+                    options={{ headerTitle: '', headerShown: false }}
+                />
+                <stackRoutes.Screen
+                    name="Produto"
+                    component={Produto}
+                    options={{ headerTitle: '', headerShown: false }}
+                />
+            </stackRoutes.Navigator>
+        </NavigationContainer>
     )
-)
+}
