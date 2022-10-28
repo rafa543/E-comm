@@ -4,8 +4,12 @@ import { styles } from "./styles";
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
-import { useState } from "react";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
+import CarouselCards from "../../components/Carrosel/CarouselCards";
+import { Carosel } from "../../components/Carrosel/CArrosusel2";
+import { CarroselY } from "../../components/Carrosel/CarroselYoutube";
+
+
 
 
 
@@ -16,7 +20,7 @@ export function Produto() {
     const route = useRoute()
     const produto = route.params.data
     const navigation = useNavigation()
-
+    
     function setarNome() {
         if (produto.title.length >= 25) {
             return produto.title.slice(0, 25) + "..."
@@ -46,6 +50,13 @@ export function Produto() {
                     </TouchableOpacity>
                 </View>
             </View>
+            {/* CAROUSEL */}
+            {/* <View style={style.carousel}>
+                <CarouselCards imagem={produto.imagens}/>
+            </View> */}
+            {/* <Carosel produto={produto.imagens}/> */}
+            <CarroselY imagens={produto.imagens}/>
+
         </ScrollView>
     )
 }

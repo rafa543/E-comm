@@ -25,6 +25,11 @@ export const styles = () => {
         },
         busca: {
             marginRight: 20
+        },
+        carousel: {
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center'
         }
     })
 }
