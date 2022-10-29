@@ -108,6 +108,19 @@ export function Produto() {
                 </ScrollView>
             </View>
 
+
+            <View style={{marginHorizontal: 16}}>
+                <Text style={style.textSize}>Specification</Text>
+                <View style={style.textspecification}>
+                    <Text>Shown:</Text>
+                    <Text>Laser {`\n`}Blue/Anthracite/Watermelon{`\n`}/White</Text>
+                </View>
+                <View>
+                    <Text>Description</Text>
+                    <Text>CD0113-400</Text>
+                </View>
+                <Text>The Nike Air Max 270 React ENG combines a full-length React foam midsole with a 270 Max Air unit for unrivaled comfort and a striking visual experience.</Text>
+            </View>
         </ScrollView>
     )
 }

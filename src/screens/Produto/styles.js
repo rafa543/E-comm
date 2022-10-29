@@ -8,10 +8,12 @@ export const styles = () => {
             flex: 1,
             marginTop: StatusBar.currentHeight || 0,
             backgroundColor: 'white',
-            paddingTop: 30,
+            // marginTop:
+            // paddingTop: 30,
         },
         header: {
             flexDirection: 'row',
+            marginTop: 20,
             marginHorizontal: 16,
             marginBottom: 28,
             justifyContent: 'space-between'
@@ -69,6 +71,10 @@ export const styles = () => {
             height: 18,
             backgroundColor: 'white',
             borderRadius: 9
+        },
+        textspecification: {
+            fontSize: 12,
+            // color: "#223263"
         }
     })
 }
