@@ -7,7 +7,8 @@ const { width } = Dimensions.get('window')
 
 const OnBoardingItem = ({ item }) => {
     return (
-        <Image source={{ uri: item.imgUrl }} style={{ width, height: width }} />
+        // <Image source={{ uri: item.imgUrl }} style={{ width, height: width }} />
+        <Image source={{ uri: item.imgUrl }} style={{ width, height: 238 }} />
     )
 }
 
@@ -26,7 +27,6 @@ export function Carosel({ produto }) {
                     if(slide != activeIndex){
                         setActiveIndex(slide)
                     }
-                    // setActiveIndex(Math.ceil(event.nativeEvent.contentOffset.x / event.nativeEvent.layoutMeasurement.width))
                 }}
                 scrollEventThrottle={0}
                 showsHorizontalScrollIndicator={false}
@@ -40,7 +40,7 @@ export function Carosel({ produto }) {
                             produto.map((_, i) => (
                                 <View
                                     style={[style.dot,
-                                    { backgroundColor: i === activeIndex ? 'blue' : 'grey' }]} />
+                                    { backgroundColor: i === activeIndex ? '#40BFFF' : '#EBF0FF' }]} />
                             ))
                         }
                     </View>

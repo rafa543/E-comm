@@ -9,13 +9,13 @@ export const styles = () => {
         dotsContainer: {
             flexDirection: "row",
             justifyContent: "center",
-            marginTop: 10,
+            marginTop: 20,
         },
         dot: {
-            width: 8,
-            height: 8,
-            borderRadius: 4,
-            marginHorizontal: 1
+            width: 10,
+            height: 10,
+            borderRadius: 5,
+            marginHorizontal: 6
         }
     })
 }
