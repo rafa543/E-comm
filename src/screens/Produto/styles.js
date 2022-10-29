@@ -8,6 +8,7 @@ export const styles = () => {
             flex: 1,
             marginTop: StatusBar.currentHeight || 0,
             backgroundColor: 'white',
+            marginBottom: 70
             // marginTop:
             // paddingTop: 30,
         },
@@ -73,8 +74,76 @@ export const styles = () => {
             borderRadius: 9
         },
         textspecification: {
-            fontSize: 12,
-            // color: "#223263"
-        }
+            fontSize: 16,
+            color: "#223263"
+        },
+        areaShow: {
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+        },
+        showText: {
+            textAlign: 'right',
+            color: '#9098B1'
+        },
+        description: {
+            fontSize: 18,
+            lineHeight: 32,
+            color: '#9098B1'
+        },
+        titleStyle: {
+            fontSize: 28,
+            fontWeight: 'bold',
+            textAlign: 'center',
+            padding: 10,
+        },
+        textStyle: {
+            fontSize: 16,
+            textAlign: 'center',
+            padding: 10,
+        },
+        touchableOpacityStyle: {
+            position: 'absolute',
+            width: 50,
+            height: 50,
+            alignItems: 'center',
+            justifyContent: 'center',
+            right: 30,
+            bottom: 30,
+        },
+        floatingButtonStyle: {
+            resizeMode: 'contain',
+            width: 70,
+            height: 70,
+        },
+        mainviewStyle: {
+            // flex: 1,
+            // paddingTop: 100,
+            flexDirection: 'column',
+            // marginBottom: 20
+          },
+          footer: {
+            position: 'absolute',
+            flex:0.1,
+            left: 0,
+            right: 0,
+            bottom: -10,
+            backgroundColor:'#40BFFF',
+            flexDirection:'row',
+            height:80,
+            alignItems:'center',
+            borderRadius: 5,
+            marginHorizontal: 16,
+          },
+          bottomButtons: {
+            alignItems:'center',
+            justifyContent: 'center',
+            flex:1,
+          },
+          footerText: {
+            color:'white',
+            fontWeight:'bold',
+            alignItems:'center',
+            fontSize:18,
+          },
     })
 }
