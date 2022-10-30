@@ -1,5 +1,4 @@
 import { StyleSheet, StatusBar } from 'react-native';
-import React from 'react';
 
 export const styles = () => {
     return StyleSheet.create({

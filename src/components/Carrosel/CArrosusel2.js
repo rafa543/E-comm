@@ -23,7 +23,6 @@ export function Carosel({ produto }) {
                 horizontal
                 onMomentumScrollEnd={(event) => {
                     const slide = Math.ceil(event.nativeEvent.contentOffset.x / event.nativeEvent.layoutMeasurement.width)
-                    console.log(slide)
                     if(slide != activeIndex){
                         setActiveIndex(slide)
                     }

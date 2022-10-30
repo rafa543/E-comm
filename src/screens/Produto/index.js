@@ -55,6 +55,7 @@ export function Produto() {
                         </TouchableOpacity>
                     </View>
                 </View>
+                
                 {/* CAROUSEL */}
                 {/* <View style={style.carousel}>
                 <CarouselCards imagem={produto.imagens}/>
