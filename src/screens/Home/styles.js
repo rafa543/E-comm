@@ -14,7 +14,8 @@ export const styles = () => {
             marginTop: 20,
             flexDirection: 'row',
             alignItems: 'center',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            marginBottom: 20
         },
         input: {
             width: 263,

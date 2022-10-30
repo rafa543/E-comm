@@ -1,48 +1,33 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
-export function ContainerView() {
+export function Botao() {
     return (
-        <ScrollView style={styles.scrollViewStyle}>
-            <View>
-                <Text style={styles.textStyle}> Example for ScrollView and Fixed Footer</Text>
-            </View>
-        </ScrollView>
+        <TouchableOpacity style={styles.container}>
+            <Text style={styles.text}>Add To Cart</Text>
+        </TouchableOpacity>
     )
 }
 
 var styles = StyleSheet.create({
-    mainviewStyle: {
-        flex: 1,
-        flexDirection: 'column',
-    },
-    footer: {
-        position: 'absolute',
-        flex: 0.1,
-        left: 0,
-        right: 0,
-        bottom: -10,
-        backgroundColor: 'green',
-        flexDirection: 'row',
-        height: 80,
-        alignItems: 'center',
-    },
-    bottomButtons: {
+    container: {
         alignItems: 'center',
         justifyContent: 'center',
-        flex: 1,
+        width: "92%",
+        position: 'absolute',
+        bottom: 15,
+        marginLeft: 16,
+        height: 70,
+        backgroundColor: '#40BFFF',
+        borderRadius: 5,
+        shadowColor: '#40BFFF',
+        shadowOffset: {width: -10, height: 20},
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        elevation: 20
     },
-    footerText: {
+    text: {
         color: 'white',
-        fontWeight: 'bold',
-        alignItems: 'center',
         fontSize: 18,
-    },
-    textStyle: {
-        alignSelf: 'center',
-        color: 'orange'
-    },
-    scrollViewStyle: {
-        borderWidth: 2,
-        borderColor: 'blue'
+        fontWeight: 'bold'
     }
 });

@@ -8,7 +8,8 @@ export const styles = () => {
             flex: 1,
             marginTop: StatusBar.currentHeight || 0,
             backgroundColor: 'white',
-            marginBottom: 70
+            // paddingBottom: 60
+            // paddingBottom: 70
             // marginTop:
             // paddingTop: 30,
         },
@@ -115,35 +116,6 @@ export const styles = () => {
             width: 70,
             height: 70,
         },
-        mainviewStyle: {
-            // flex: 1,
-            // paddingTop: 100,
-            flexDirection: 'column',
-            // marginBottom: 20
-          },
-          footer: {
-            position: 'absolute',
-            flex:0.1,
-            left: 0,
-            right: 0,
-            bottom: -10,
-            backgroundColor:'#40BFFF',
-            flexDirection:'row',
-            height:80,
-            alignItems:'center',
-            borderRadius: 5,
-            marginHorizontal: 16,
-          },
-          bottomButtons: {
-            alignItems:'center',
-            justifyContent: 'center',
-            flex:1,
-          },
-          footerText: {
-            color:'white',
-            fontWeight:'bold',
-            alignItems:'center',
-            fontSize:18,
-          },
+        
     })
 }

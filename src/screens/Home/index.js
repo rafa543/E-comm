@@ -4,9 +4,12 @@ import { StatusBar } from 'expo-status-bar';
 import { Category } from "../../components/Category";
 import { ListProduct } from "../../components/ListProduct";
 import { ScrollView } from "react-native-gesture-handler";
+import { Carosel } from "../../components/Carrosel/CArrosusel2";
+import { DATA } from "../../utils/data";
+import { Separator } from "../../components/Separator";
 
 export function Home() {
-    const renderItem = ({ item}) => <ItemProduct data={item} teste={'teste'}/>;
+    const renderItem = ({ item }) => <ItemProduct data={item} teste={'teste'} />;
     const style = styles()
     const number = '2'
 
@@ -23,10 +26,15 @@ export function Home() {
                 </View>
                 <Image style={style.favorite} source={require('../../assets/Vector.png')} />
                 <Image style={style.notification} source={require('../../assets/notifications.png')} />
-
             </View>
 
+            <Separator/>
+
+            <Carosel produto={DATA[0].imagens} />
+
             <Category />
+
+
 
             <View style={style.scrolls}>
                 <View style={style.containerText}>
@@ -46,7 +54,7 @@ export function Home() {
                 </View>
 
                 <View>
-                    <ListProduct horizontalOrVertical={"horizontal"}/>
+                    <ListProduct horizontalOrVertical={"horizontal"} />
                 </View>
             </View>
 

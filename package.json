@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo/webpack-config": "^0.17.0",
     "@react-navigation/bottom-tabs": "^6.4.0",
     "@react-navigation/core": "^6.4.0",
     "@react-navigation/native-stack": "^6.9.1",
@@ -16,9 +17,11 @@
     "expo": "~46.0.16",
     "expo-status-bar": "~1.4.0",
     "react": "18.0.0",
+    "react-dom": "18.0.0",
     "react-native": "0.69.6",
     "react-native-gesture-handler": "^2.8.0",
-    "react-native-snap-carousel": "^4.0.0-beta.6"
+    "react-native-snap-carousel": "^4.0.0-beta.6",
+    "react-native-web": "~0.18.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

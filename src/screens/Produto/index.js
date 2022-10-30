@@ -1,20 +1,13 @@
-import { View, Text, ScrollView, Image, TouchableOpacity, TouchableHighlight } from "react-native";
-import { useRoute, useNavigation } from '@react-navigation/core'
-import { styles } from "./styles";
-import { AntDesign } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
-import { Entypo } from '@expo/vector-icons';
-import { FontAwesome } from '@expo/vector-icons';
-import { FlatList } from "react-native-gesture-handler";
-import CarouselCards from "../../components/Carrosel/CarouselCards";
-import { Carosel } from "../../components/Carrosel/CArrosusel2";
-import { CarroselY } from "../../components/Carrosel/CarroselYoutube";
-import { ClassificacaoStars } from "../../components/Estrelas";
+import { AntDesign, Entypo, Ionicons } from '@expo/vector-icons';
+import { useNavigation, useRoute } from '@react-navigation/core';
 import { useState } from "react";
-import { ContainerView } from "../../components/Botao";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Botao } from "../../components/Botao";
+import { Carosel } from "../../components/Carrosel/CArrosusel2";
+import { ClassificacaoStars } from "../../components/Estrelas";
+import { styles } from "./styles";
 
 const style = styles()
-
 
 export function Produto() {
     const route = useRoute()
@@ -111,7 +104,7 @@ export function Produto() {
                 </View>
 
 
-                <View style={{ marginHorizontal: 16 }}>
+                <View style={{ marginHorizontal: 16, marginBottom: 100 }}>
                     <Text style={style.textSize}>Specification</Text>
                     <View style={style.areaShow}>
                         <Text style={style.textspecification}>Shown:</Text>
@@ -124,38 +117,8 @@ export function Produto() {
                     <Text style={style.description}>The Nike Air Max 270 React ENG combines a full-length React foam midsole with a 270 Max Air unit for unrivaled comfort and a striking visual experience.</Text>
                 </View>
 
-
-
-
             </ScrollView>
-            {/* <TouchableOpacity
-                style={{
-                    borderWidth: 1,
-                    borderColor: 'rgba(0,0,0,0.2)',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: 70,
-                    position: 'absolute',
-                    bottom: 10,
-                    right: 10,
-                    height: 70,
-                    backgroundColor: '#fff',
-                    borderRadius: 100,
-                }}
-            >
-                <Text>gfdsgd</Text>
-            </TouchableOpacity> */}
-
-            <View style={style.mainviewStyle}>
-                <View style={style.footer}>
-                    <TouchableHighlight style={style.bottomButtons}>
-                        <Text style={style.footerText}>Add To Cart</Text>
-                    </TouchableHighlight>
-                    {/* <TouchableHighlight style={style.bottomButtons}>
-                        <Text style={style.footerText}>B</Text>
-                    </TouchableHighlight> */}
-                </View>
-            </View>
+            <Botao />
         </>
     )
 }
