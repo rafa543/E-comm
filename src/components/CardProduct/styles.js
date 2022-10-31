@@ -38,6 +38,7 @@ export const styles = () => {
             color: '#40bfff',
         },
         discount: {
+            alignItems: 'center',
             flexDirection: 'row',
             justifyContent: 'space-between'
         },

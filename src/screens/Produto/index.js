@@ -28,7 +28,6 @@ export function Produto() {
     }
 
     function handleSelected(item) {
-        console.log(item)
         selectBotaoSelected(item)
     }
 

@@ -1,41 +1,32 @@
-import { View, Text, TextInput, Image, TouchableOpacity, ImageBackground, FlatList } from "react-native";
+import { View, Text, TextInput, Image, TouchableOpacity, ImageBackground, FlatList, LogBox, ScrollView } from "react-native";
 import { styles } from "./styles";
 import { StatusBar } from 'expo-status-bar';
 import { Category } from "../../components/Category";
 import { ListProduct } from "../../components/ListProduct";
-import { ScrollView } from "react-native-gesture-handler";
 import { Carosel } from "../../components/Carrosel/CArrosusel2";
 import { DATA } from "../../utils/data";
 import { Separator } from "../../components/Separator";
+import { useNavigation } from "@react-navigation/core";
+import { SearchDefault } from "../../components/SearchDefault";
 
 export function Home() {
-    const renderItem = ({ item }) => <ItemProduct data={item} teste={'teste'} />;
     const style = styles()
-    const number = '2'
+
+    // useEffect(() => {
+    //     LogBox.ignoreLogs(["VirtualizedLists should never be nested"])
+    // }, [])
 
     return (
         <ScrollView style={style.container}>
             <StatusBar backgroundColor="white" />
-            <View style={style.header}>
-                <View>
-                    <TextInput
-                        style={style.input}
-                        placeholder="Search Product"
-                    />
-                    <Image style={style.iconSerch} source={require('../../assets/Group.png')} />
-                </View>
-                <Image style={style.favorite} source={require('../../assets/Vector.png')} />
-                <Image style={style.notification} source={require('../../assets/notifications.png')} />
-            </View>
 
-            <Separator/>
+            <SearchDefault/>
+            <Separator />
 
             <Carosel produto={DATA[0].imagens} />
 
             <Category />
 
-
-
             <View style={style.scrolls}>
                 <View style={style.containerText}>
                     <Text style={style.textCategory}>Flash Sale</Text>
@@ -56,6 +47,7 @@ export function Home() {
                 <View>
                     <ListProduct horizontalOrVertical={"horizontal"} />
                 </View>
+
             </View>
 
             {/* CARTAO QUE SERA UM COMPONENTE */}
@@ -68,10 +60,11 @@ export function Home() {
                 </ImageBackground>
             </View>
 
+
+
             <View>
                 <ListProduct horizontalOrVertical={"vertical"} />
             </View>
-
         </ScrollView>
     )
 }

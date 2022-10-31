@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Produto } from '../screens/Produto';
 import Rotas from './tab.routes';
+import { Favoritos } from '../screens/Favoritos';
 
 const stackRoutes = createStackNavigator();
 
@@ -18,6 +19,11 @@ export default function StackRoutes() {
                 <stackRoutes.Screen
                     name="Produto"
                     component={Produto}
+                    options={{ headerTitle: '', headerShown: false }}
+                />
+                <stackRoutes.Screen
+                    name="Favoritos"
+                    component={Favoritos}
                     options={{ headerTitle: '', headerShown: false }}
                 />
             </stackRoutes.Navigator>

@@ -1,14 +1,21 @@
+import { useNavigation } from '@react-navigation/core'
 import { useState } from 'react'
 import { Dimensions, FlatList, Image, SafeAreaView, View } from 'react-native'
-import { DATA } from '../../utils/data'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import { styles } from './style'
+import { DATA } from "../../utils/data";
+
 const style = styles()
 const { width } = Dimensions.get('window')
 
 const OnBoardingItem = ({ item }) => {
+    const data = DATA[0]
+    const navigation  = useNavigation();
+    
     return (
-        // <Image source={{ uri: item.imgUrl }} style={{ width, height: width }} />
-        <Image source={{ uri: item.imgUrl }} style={{ width, height: 238 }} />
+        <TouchableOpacity onPress={() => navigation.navigate("Produto", {data})}>
+            <Image source={{ uri: item.imgUrl }} style={{ width, height: 238 }} />
+        </TouchableOpacity>
     )
 }
 

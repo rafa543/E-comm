@@ -1,11 +1,11 @@
-import { FlatList, View, Text, Image, TouchableOpacity } from "react-native"
-import { styles } from "./styles"
+import { FlatList } from "react-native";
 import { DATA } from "../../utils/data";
 import { CardProduct } from "../CardProduct";
+import { styles } from "./styles";
 const style = styles()
 
 export function ListProduct({ horizontalOrVertical }) {
-    const renderItem = ({ item }) => <CardProduct data={item} />;
+    const renderItem = ({ item }) => <CardProduct data={item} favorites={horizontalOrVertical === 'favorites' ? true : false}/>;
     const horizontal = horizontalOrVertical === 'horizontal'
     
     if (horizontal) {
@@ -17,8 +17,19 @@ export function ListProduct({ horizontalOrVertical }) {
                 horizontal renderItem={renderItem} 
                 keyExtractor={item => item.id} />
         )
-    } else {
+    } else if(horizontalOrVertical == "vertical"){
 
+        return (
+            <FlatList
+                data={DATA.reverse()}
+                style={[style.container, { marginRight: 0, }]}
+                showsHorizontalScrollIndicator={false}
+                numColumns={2}
+                renderItem={renderItem}
+                keyExtractor={item => item.id}
+            />
+        )
+    }else {
         return (
             <FlatList
                 data={DATA.reverse()}

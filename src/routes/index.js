@@ -40,10 +40,10 @@ export default function Rotas() {
                 tabBarInactiveTintColor: 'gray',
             })} >
                 <Tab.Screen name="Home" component={Home} options={{ headerShown: false }} />
-                <Tab.Screen name="Explore" component={Produto} options={{ headerShown: false }} />
+                {/* <Tab.Screen name="Explore" component={Produto} options={{ headerShown: false }} />
                 <Tab.Screen name="Cart" component={Produto} options={{ headerShown: false, tabBarBadge: 3 }} />
                 <Tab.Screen name="Offer" component={Produto} options={{ headerShown: false }} />
-                <Tab.Screen name="Account" component={Produto} options={{ headerShown: false }} />
+                <Tab.Screen name="Account" component={Produto} options={{ headerShown: false }} /> */}
             </Tab.Navigator>
         </NavigationContainer>
     )
