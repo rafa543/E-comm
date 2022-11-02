@@ -27,7 +27,7 @@ export const styles = () => {
             flexDirection: 'row',
             flexWrap: "wrap",
             marginRight: -12,
-            marginBottom: 16
+            marginBottom: 16,
         },
         containerBotao: {
             marginRight: 12,

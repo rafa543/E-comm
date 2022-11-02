@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Produto } from '../screens/Produto';
 import Rotas from './tab.routes';
 import { Favoritos } from '../screens/Favoritos';
+import { SignIn } from '../screens/SignIn';
 
 const stackRoutes = createStackNavigator();
 
@@ -11,6 +12,11 @@ export default function StackRoutes() {
     return (
         <NavigationContainer>
             <stackRoutes.Navigator>
+            <stackRoutes.Screen
+                    name="SignIn"
+                    component={SignIn}
+                    options={{ headerTitle: '', headerShown: false }}
+                />
                 <stackRoutes.Screen
                     name="Home"
                     component={Rotas}

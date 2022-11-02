@@ -6,21 +6,43 @@ import { ListProduct } from "../../components/ListProduct";
 import { Carosel } from "../../components/Carrosel/CArrosusel2";
 import { DATA } from "../../utils/data";
 import { Separator } from "../../components/Separator";
-import { useNavigation } from "@react-navigation/core";
 import { SearchDefault } from "../../components/SearchDefault";
+import Fire from "../../config";
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
+
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(Fire);
 
 export function Home() {
     const style = styles()
+    const [data, setData] = useState([])
 
-    // useEffect(() => {
-    //     LogBox.ignoreLogs(["VirtualizedLists should never be nested"])
-    // }, [])
+    async function teste() {
+     
+        try {
+            const querySnapshot = await getDocs(collection(db, "produtos"));
+            querySnapshot.forEach((doc) => {
+                setData([doc.data()])
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        console.log('Ola')
+        teste()
+        
+        // LogBox.ignoreLogs(["VirtualizedLists should never be nested"])
+    }, [])
 
     return (
         <ScrollView style={style.container}>
             <StatusBar backgroundColor="white" />
-
-            <SearchDefault/>
+            {console.log(data)}
+            <SearchDefault />
             <Separator />
 
             <Carosel produto={DATA[0].imagens} />
