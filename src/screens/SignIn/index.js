@@ -7,6 +7,7 @@ import { Alert, Image, Text, TextInput, TouchableOpacity, View } from "react-nat
 import { styles } from "./styles";
 import Fire from '../../config/firebase'
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { TopoAuth } from "../../components/TopoAuth";
 
 const style = styles()
 
@@ -65,11 +66,8 @@ export function SignIn() {
     return (
         <View style={style.container}>
             <StatusBar backgroundColor="white" />
-            <View style={style.logo}>
-                <Image style={style.image} source={require("./../../../assets/adaptive-icon3.png")} />
-                <Text style={style.textWelcome}>Bem-vindo ao E-com</Text>
-                <Text style={style.subtitle}>Sign in to continue</Text>
-            </View>
+
+            <TopoAuth title={"Bem-vindo ao E-comm"} subtitle={"Sign in to continue"}/>
 
             <View style={style.containerLogin}>
                 <Stack>
@@ -129,8 +127,8 @@ export function SignIn() {
 
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 10 }}>
                     <Text style={{ color: '#9098B1' }}>Don’t have a account?</Text>
-                    <TouchableOpacity>
-                        <Text style={{ color: '#40BFFF' }}>Register</Text>
+                    <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+                        <Text style={{ color: '#40BFFF' }}> Register</Text>
                     </TouchableOpacity>
                 </View>
             </View>

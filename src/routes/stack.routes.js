@@ -5,6 +5,7 @@ import { Produto } from '../screens/Produto';
 import Rotas from './tab.routes';
 import { Favoritos } from '../screens/Favoritos';
 import { SignIn } from '../screens/SignIn';
+import { Register } from '../screens/Register';
 
 const stackRoutes = createStackNavigator();
 
@@ -12,9 +13,15 @@ export default function StackRoutes() {
     return (
         <NavigationContainer>
             <stackRoutes.Navigator>
-            <stackRoutes.Screen
+
+                <stackRoutes.Screen
                     name="SignIn"
                     component={SignIn}
+                    options={{ headerTitle: '', headerShown: false }}
+                />
+                <stackRoutes.Screen
+                    name="Register"
+                    component={Register}
                     options={{ headerTitle: '', headerShown: false }}
                 />
                 <stackRoutes.Screen

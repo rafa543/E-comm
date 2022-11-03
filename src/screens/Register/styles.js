@@ -1,4 +1,5 @@
-import { StatusBar, StyleSheet } from "react-native"
+import { StatusBar } from "expo-status-bar"
+import { StyleSheet } from "react-native"
 
 export const styles = () => {
     return StyleSheet.create({
@@ -7,14 +8,15 @@ export const styles = () => {
             justifyContent: 'center',
             marginTop: StatusBar.currentHeight || 0,
             backgroundColor: 'white',
-
         },
         containerLogin: {
             marginHorizontal: 16,
         },
         input: {
             height: 60,
+            width: '100%',
             paddingLeft: 55,
+            paddingRight: 55,
             borderWidth: 1,
             padding: 10,
             borderWidth: 2,
@@ -26,8 +28,14 @@ export const styles = () => {
         },
         icon: {
             position: 'absolute',
-            top: 15,
+            top: 20,
             left: 18
+        },
+        iconPass: {
+            position: 'absolute',
+            top: 20,
+            right: 20
+            // left: -10
         },
         botao: {
             marginTop: 10,
@@ -48,45 +56,5 @@ export const styles = () => {
             fontWeight: 'bold',
             fontSize: 16
         }, 
-        orLine: {
-            marginTop: 20,
-            marginBottom: 10,
-            marginHorizontal: 16,
-            width: '100%',
-            flexDirection: 'row',
-            alignItems: 'center'
-        },
-        textOr: {
-            marginHorizontal: 10,
-            fontWeight: 'bold',
-            color: "#9098B1"
-        },
-        line: {
-            width: '41%', 
-            height: 2, 
-            backgroundColor: '#EBF0FF'
-        },
-        botaoLogarRedes: {
-            marginTop: 10,
-            height: 70,
-            justifyContent: 'center',
-            borderColor: '#EBF0FF',
-            borderRadius: 5,
-            borderWidth: 2
-        }, 
-        logoBotao: {
-            position: 'absolute',
-            width: 40,
-            height: 40,
-            // top: 15,
-            left: 16
-        },
-        textBotaoRedes: {
-            textAlign: 'center',
-            justifyContent: 'center',
-            color: '#9098B1',
-            fontWeight: 'bold',
-            fontSize: 16
-        }
-    })
+    }) 
 }
