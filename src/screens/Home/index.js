@@ -7,36 +7,29 @@ import { Carosel } from "../../components/Carrosel/CArrosusel2";
 import { DATA } from "../../utils/data";
 import { Separator } from "../../components/Separator";
 import { SearchDefault } from "../../components/SearchDefault";
-import Fire from "../../config";
+// import Fire from "../../config/firebase";
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { getFirestore } from "firebase/firestore";
+import { getAuth, signOut } from "firebase/auth";
+import { useNavigation } from "@react-navigation/core";
 
 // Initialize Cloud Firestore and get a reference to the service
-const db = getFirestore(Fire);
+// const db = getFirestore(Fire);
 
 export function Home() {
     const style = styles()
     const [data, setData] = useState([])
 
-    async function teste() {
-     
-        try {
-            const querySnapshot = await getDocs(collection(db, "produtos"));
-            querySnapshot.forEach((doc) => {
-                setData([doc.data()])
-            });
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    const navigation = useNavigation()
 
     useEffect(() => {
-        console.log('Ola')
-        teste()
+        console.log(getAuth().currentUser?.email)
         
+        
+
         // LogBox.ignoreLogs(["VirtualizedLists should never be nested"])
     }, [])
+
+
 
     return (
         <ScrollView style={style.container}>

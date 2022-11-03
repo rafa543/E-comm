@@ -1,16 +1,66 @@
-import React, { useState } from "react";
-import { StatusBar } from "expo-status-bar";
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
-import { styles } from "./styles";
-import { Stack, IconButton, ActivityIndicator, Button } from "@react-native-material/core";
+import React, { useEffect, useState } from "react";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { ActivityIndicator, Stack } from "@react-native-material/core";
 import { useNavigation } from "@react-navigation/core";
+import { StatusBar } from "expo-status-bar";
+import { Alert, Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { styles } from "./styles";
+import Fire from '../../config/firebase'
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+
 const style = styles()
 
 export function SignIn() {
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
+
     const navigation = useNavigation()
+
+    useEffect(() => {
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                const uid = user.uid;
+
+                navigation.replace("Home")
+                console.log(uid)
+            } else {
+                // User is signed out
+                // ...
+            }
+        });
+    }, [])
+
+    const handleSignUp = () => {
+        const auth = getAuth();
+        createUserWithEmailAndPassword(auth, email, senha)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user.email)
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            });
+    }
+
+    const handleSignIn = () => {
+        setIsLoading(true)
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, email, senha)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log("Logado com " + user.email)
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            });
+        
+    }
 
     return (
         <View style={style.container}>
@@ -26,8 +76,8 @@ export function SignIn() {
                     <View>
                         <TextInput
                             style={style.input}
-                            onChangeText={setEmail}
                             value={email}
+                            onChangeText={setEmail}
                             placeholder="Your Email"
                             keyboardType="email-address"
                         />
@@ -39,13 +89,19 @@ export function SignIn() {
                             onChangeText={setSenha}
                             value={senha}
                             placeholder="Password"
-                            keyboardType="visible-password"
+                            secureTextEntry={true}
                         />
                         <MaterialCommunityIcons style={style.icon} name="account-key-outline" size={24} color="#9098B1" />
                     </View>
-                    <TouchableOpacity style={style.botao} onPress={() => navigation.navigate('Home')}>
-                        <Text style={style.textBotao}>Sign in</Text>
+                    <TouchableOpacity style={style.botao} onPress={handleSignIn} disabled={isLoading ? true : false}>
+                        
+                        {
+                            isLoading ?
+                                <ActivityIndicator size="large" color="white" /> :
+                            <Text style={style.textBotao}>Sign in</Text>
+                        }
                     </TouchableOpacity>
+
                 </Stack>
             </View>
 
