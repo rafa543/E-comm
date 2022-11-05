@@ -1,23 +1,43 @@
+import { getAuth } from "firebase/auth";
+import { useEffect, useState } from "react";
 import { FlatList } from "react-native";
+import api from "../../services/api";
 import { DATA } from "../../utils/data";
 import { CardProduct } from "../CardProduct";
 import { styles } from "./styles";
 const style = styles()
 
 export function ListProduct({ horizontalOrVertical }) {
-    const renderItem = ({ item }) => <CardProduct data={item} favorites={horizontalOrVertical === 'favorites' ? true : false}/>;
+    const [produtos, setProdutos] = useState();
+    const renderItem = ({ item }) => <CardProduct data={item} favorites={horizontalOrVertical === 'favorites' ? true : false} />;
     const horizontal = horizontalOrVertical === 'horizontal'
-    
+
+    async function loadProducts() {
+        try {
+            const response = await api.get('/produtos');
+            const list = response.data;
+            
+            setProdutos(list)
+
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    useEffect(() => {
+        loadProducts()
+    }, [])
+
     if (horizontal) {
         return (
-            <FlatList 
-                data={DATA.reverse()} 
-                style={style.container} 
-                showsHorizontalScrollIndicator={false} 
-                horizontal renderItem={renderItem} 
+            <FlatList
+                data={produtos}
+                style={style.container}
+                showsHorizontalScrollIndicator={false}
+                horizontal renderItem={renderItem}
                 keyExtractor={item => item.id} />
         )
-    } else if(horizontalOrVertical == "vertical"){
+    } else if (horizontalOrVertical == "vertical") {
 
         return (
             <FlatList
@@ -29,7 +49,7 @@ export function ListProduct({ horizontalOrVertical }) {
                 keyExtractor={item => item.id}
             />
         )
-    }else {
+    } else {
         return (
             <FlatList
                 data={DATA.reverse()}

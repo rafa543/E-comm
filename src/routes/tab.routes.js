@@ -3,7 +3,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator, createNativeStackNavigator } from '@react-navigation/bottom-tabs';
 import { Home } from '../screens/Home';
-import { Produto } from '../screens/Produto';
 import { Explore } from '../screens/Explore';
 
 const Tab = createBottomTabNavigator();

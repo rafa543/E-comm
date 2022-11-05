@@ -8,7 +8,7 @@ export function CardProduct({ data, favorites }) {
     const navigation = useNavigation()
 
     function handleProduct(data) {
-        navigation.navigate('Produto', {data})
+        navigation.navigate('Produto', data.id)
     }
 
     return (

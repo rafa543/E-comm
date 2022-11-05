@@ -29,6 +29,7 @@ export function SignIn() {
             } else {
                 // User is signed out
                 // ...
+                console.log("deu erro")
             }
         });
     }, [])
