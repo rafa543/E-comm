@@ -4,6 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator, createNativeStackNavigator } from '@react-navigation/bottom-tabs';
 import { Home } from '../screens/Home';
 import { Explore } from '../screens/Explore';
+import { Carrinho } from '../screens/Carrinho';
 
 const Tab = createBottomTabNavigator();
 
@@ -38,7 +39,7 @@ export default function Rotas() {
         })} >
             <Tab.Screen name="Home" component={Home} options={{ headerShown: false }} />
             <Tab.Screen name="Explore" component={Explore} options={{ headerShown: false }} />
-            {/* <Tab.Screen name="Cart" component={Home} options={{ headerShown: false, tabBarBadge: 3 }} /> */}
+            <Tab.Screen name="Cart" component={Carrinho} options={{ headerShown: false, tabBarBadge: 3 }} />
             {/* <Tab.Screen name="Offer" component={Home} options={{ headerShown: false }} />
             <Tab.Screen name="Account" component={Home} options={{ headerShown: false }} /> */}
         </Tab.Navigator>

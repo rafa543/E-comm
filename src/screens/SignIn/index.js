@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { createRef, useEffect, useState } from "react";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { ActivityIndicator, Stack } from "@react-native-material/core";
 import { useNavigation } from "@react-navigation/core";
@@ -8,6 +8,8 @@ import { styles } from "./styles";
 import Fire from '../../config/firebase'
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { TopoAuth } from "../../components/TopoAuth";
+import { MessageError } from "../../components/MessageError";
+import reactDom from "react-dom";
 
 const style = styles()
 
@@ -15,8 +17,14 @@ export function SignIn() {
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
     const [isLoading, setIsLoading] = useState(false)
+    const [focusEmail, setFocusEmail] = useState(false)
+    const [focusSenha, setFocusSenha] = useState(false)
+    const [erro, setErro] = useState(false)
+    const [mensagemErro, setMensagemmErro] = useState('')
 
     const navigation = useNavigation()
+
+    const emailInput = createRef()
 
     useEffect(() => {
         const auth = getAuth();
@@ -27,9 +35,7 @@ export function SignIn() {
                 navigation.replace("Home")
                 console.log(uid)
             } else {
-                // User is signed out
-                // ...
-                console.log("deu erro")
+                console.log("nenhum usuario logado")
             }
         });
     }, [])
@@ -49,55 +55,88 @@ export function SignIn() {
 
     const handleSignIn = () => {
         setIsLoading(true)
+
         const auth = getAuth();
         signInWithEmailAndPassword(auth, email, senha)
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
                 console.log("Logado com " + user.email)
-                // ...
             })
             .catch((error) => {
                 const errorCode = error.code;
-                const errorMessage = error.message;
+                
+                if(errorCode === "auth/invalid-email"){
+                    setErro(true)
+                    setMensagemmErro("Oops! Email invalido")
+                }else if(errorCode === "auth/user-not-found"){
+                    setErro(true)
+                    setMensagemmErro("Oops! Usuario não encontrado")
+                }else if(errorCode === "auth/wrong-password"){
+                    setErro(true)
+                    setMensagemmErro("Oops! Senha esta incorreta")
+                    setIsLoading(false)
+                    setSenha("")
+                    return
+                }
+                setEmail("")
+                setSenha("")
+                setIsLoading(false)
             });
-        
+
     }
 
     return (
         <View style={style.container}>
             <StatusBar backgroundColor="white" />
 
-            <TopoAuth title={"Bem-vindo ao E-comm"} subtitle={"Sign in to continue"}/>
+            <TopoAuth title={"Bem-vindo ao E-comm"} subtitle={"Sign in to continue"} />
 
             <View style={style.containerLogin}>
                 <Stack>
                     <View>
                         <TextInput
-                            style={style.input}
-                            value={email}
+                            ref={emailInput}
+                            style={[style.input, { borderColor: focusEmail ? "#40BFFF" : "#EBF0FF" }]}
                             onChangeText={setEmail}
+                            value={email}
                             placeholder="Your Email"
                             keyboardType="email-address"
+                            onFocus={() => setFocusEmail(true)}
+                            onBlur={() => setFocusEmail(false)}
                         />
-                        <MaterialCommunityIcons style={style.icon} name="email-outline" size={24} color="#9098B1" />
+                        <MaterialCommunityIcons style={style.icon} name="email-outline" size={24} color={focusEmail ? "#40BFFF" : "#9098B1"} />
                     </View>
+                    {
+                        erro === true && mensagemErro != "Oops! Senha esta incorreta" ?  <MessageError message={mensagemErro}/> :
+                        <View></View>
+                    }
                     <View>
                         <TextInput
-                            style={style.input}
+                            style={[style.input, { borderColor: focusSenha ? "#40BFFF" : "#EBF0FF" }]}
                             onChangeText={setSenha}
                             value={senha}
                             placeholder="Password"
                             secureTextEntry={true}
+                            onFocus={() => setFocusSenha(true)}
+                            onBlur={() => setFocusSenha(false)}
                         />
-                        <MaterialCommunityIcons style={style.icon} name="account-key-outline" size={24} color="#9098B1" />
+                        <MaterialCommunityIcons style={style.icon} name="account-key-outline" size={24} color={focusSenha ? "#40BFFF" : "#9098B1"} />
                     </View>
-                    <TouchableOpacity style={style.botao} onPress={handleSignIn} disabled={isLoading ? true : false}>
-                        
+                    {
+                        erro === true && mensagemErro === "Oops! Senha esta incorreta" ? <MessageError message={mensagemErro}/> :
+                        <View></View>
+                    }
+                    <TouchableOpacity 
+                        style={[style.botao, {opacity: email === '' || senha === '' || isLoading ? 0.5 : 1}]} 
+                        onPress={handleSignIn} 
+                        disabled={email === '' || senha === '' || isLoading ? true : false }
+                    >
+
                         {
                             isLoading ?
                                 <ActivityIndicator size="large" color="white" /> :
-                            <Text style={style.textBotao}>Sign in</Text>
+                                <Text style={style.textBotao}>Sign in</Text>
                         }
                     </TouchableOpacity>
 

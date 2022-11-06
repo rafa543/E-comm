@@ -23,7 +23,6 @@ export const styles = () => {
         },
         manFashion: {
             marginHorizontal: 16,
-            alignItems: 'center',
             flexDirection: 'row',
             flexWrap: "wrap",
             marginRight: -12,

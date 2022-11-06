@@ -83,7 +83,7 @@ export function Register() {
                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 30 }}>
                         <Text style={{ color: '#9098B1' }}>Don’t have a account?</Text>
                         <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
-                            <Text style={{ color: '#40BFFF' }}> Register</Text>
+                            <Text style={{ color: '#40BFFF' }}> Sign In</Text>
                         </TouchableOpacity>
                     </View>
 
