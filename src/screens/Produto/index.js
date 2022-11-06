@@ -73,15 +73,15 @@ export function Produto() {
                     </View>
                 </View>
                 
-                <Carosel produto={produto} />
+                <Carosel produto={produto.imagens} />
 
                 <ClassificacaoStars produto={produto} />
-                {/* {console.log(produto.sizes)} */}
+                
                 <View style={{ marginHorizontal: 16, marginBottom: 20 }}>
                     <Text style={style.textSize}>Select Size</Text>
                     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                         {
-                            produto.sizes.split(",").map((item, index) => (
+                            produto.sizes?.split(",").map((item, index) => (
                                 <TouchableOpacity
                                     style={[style.buttonSize, { borderColor: botaoSizeSelected === item ? "#40BFFF" : "#EBF0FF" }]}
                                     onPress={() => handleSizeSelected(item)}
@@ -92,12 +92,12 @@ export function Produto() {
                         }
                     </ScrollView>
                 </View>
-                        
-                {/* <View style={{ marginHorizontal: 16, marginBottom: 20 }}>
+
+                <View style={{ marginHorizontal: 16, marginBottom: 20 }}>
                     <Text style={style.textSize}>Select Cor</Text>
                     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                         {
-                            produto.colors.map((item, index) => (
+                            produto.colors?.split(", ").map((item, index) => (
                                 <TouchableOpacity
                                     style={[
                                         style.buttonColor,
@@ -114,10 +114,10 @@ export function Produto() {
                             ))
                         }
                     </ScrollView>
-                </View> */}
+                </View>
 
 
-                {/* <View style={{ marginHorizontal: 16, marginBottom: 100 }}>
+                <View style={{ marginHorizontal: 16, marginBottom: 100 }}>
                     <Text style={style.textSize}>Specification</Text>
                     <View style={style.areaShow}>
                         <Text style={style.textspecification}>Shown:</Text>
@@ -128,7 +128,7 @@ export function Produto() {
                         <Text style={style.showText}>CD0113-400</Text>
                     </View>
                     <Text style={style.description}>The Nike Air Max 270 React ENG combines a full-length React foam midsole with a 270 Max Air unit for unrivaled comfort and a striking visual experience.</Text>
-                </View> */}
+                </View>
 
             </ScrollView>
             <Botao />

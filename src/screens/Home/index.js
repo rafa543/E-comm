@@ -45,9 +45,6 @@ export function Home() {
     useEffect(() => {
         console.log(getAuth().currentUser?.email)
         // loadProducts()
-
-        
-
         // LogBox.ignoreLogs(["VirtualizedLists should never be nested"])
     }, [])
 
@@ -80,7 +77,7 @@ export function Home() {
                 </View>
 
                 <View>
-                    {/* <ListProduct horizontalOrVertical={"horizontal"} /> */}
+                    <ListProduct horizontalOrVertical={"horizontal"} />
                 </View>
 
             </View>
@@ -98,9 +95,9 @@ export function Home() {
 
 
             <View>
-                {/* <ListProduct horizontalOrVertical={"vertical"} /> */}
+                <ListProduct horizontalOrVertical={"vertical"} />
             </View>
         </ScrollView>
     )
-}
+}   
 
