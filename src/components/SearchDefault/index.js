@@ -1,9 +1,11 @@
+import { useNavigation } from '@react-navigation/core';
 import { Image, TextInput, TouchableOpacity, View } from 'react-native';
 import { styles } from './styles';
 const style = styles();
 
 
 export function SearchDefault() {
+    const navigation = useNavigation()
     return (
         <View style={style.header}>
             <View>
