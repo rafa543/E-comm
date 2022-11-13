@@ -5,6 +5,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { Separator } from "../../components/Separator";
 import { useNavigation } from "@react-navigation/core";
 import { ListProduct } from "../../components/ListProduct";
+import { ListProductFavorite } from "../../components/ListProductFavorite";
 const style = styles()
 
 export function Favoritos() {
@@ -21,7 +22,8 @@ export function Favoritos() {
             </View>
             <Separator />
             <View>
-                <ListProduct horizontalOrVertical={"favorites"} />
+                {/* <ListProduct horizontalOrVertical={"favorites"} /> */}
+                <ListProductFavorite/>
             </View>
         </ScrollView>
     )

@@ -24,8 +24,24 @@ export function ListProduct({ horizontalOrVertical }) {
         }
     };
 
+    async function loadFavorites() {
+        try {
+            const response = await api.get('/carrinho');
+            const list = response.data;
+            
+            setProdutos(list)
+
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
     useEffect(() => {
-        loadProducts()
+        if(horizontalOrVertical === "favorites"){
+            loadFavorites()
+        }else {
+            loadProducts()
+        }
     }, [])
 
     if (horizontal) {

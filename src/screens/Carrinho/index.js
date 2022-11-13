@@ -1,14 +1,33 @@
-import { StatusBar } from "expo-status-bar";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useState } from "react";
+import { useEffect } from "react";
 import { ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { Botao } from "../../components/Botao";
-import { CardProduct } from "../../components/CardProduct";
 import { CardProductCarrinho } from "../../components/CardProductCarrinho";
 import { Separator } from "../../components/Separator";
+import api from "../../services/api";
 import { styles } from "./styles";
 
 const style = styles()
 
 export function Carrinho() {
+    const [list,setList] = useState()
+
+    async function getCarrinho() {
+        try {
+            const response = await api.get(`/carrinho`);
+            const list = response.data;
+            
+            setList(list)
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    useEffect(() => {
+        getCarrinho()
+    }, [])
+
     return (
         <>
             <ScrollView style={style.container}>
@@ -17,8 +36,8 @@ export function Carrinho() {
                 </View>
                 <Separator />
 
-                <CardProductCarrinho />
-                <CardProductCarrinho />
+                <CardProductCarrinho produtos={list}/>
+                {/* <CardProductCarrinho /> */}
 
                 <View style={style.cupom}>
                     <TextInput style={style.input} placeholder="Enter Cupon Code" />
