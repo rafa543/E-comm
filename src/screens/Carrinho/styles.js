@@ -6,11 +6,16 @@ export const styles = () => {
             flex: 1,
             marginTop: StatusBar.currentHeight || 0,
             backgroundColor: 'white',
-        }, 
+        },
+        loading: {
+            flex: 1,
+            justifyContent: "center",
+            backgroundColor: 'white',
+        },
         header: {
             marginVertical: 20,
             marginHorizontal: 16
-        }, 
+        },
         text: {
             fontWeight: 'bold',
             color: '#223263',
@@ -21,7 +26,7 @@ export const styles = () => {
             flexDirection: 'row',
             height: 60,
             marginBottom: 20
-        }, 
+        },
         input: {
             width: '75%',
             borderWidth: 1,

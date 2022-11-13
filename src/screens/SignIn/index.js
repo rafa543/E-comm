@@ -21,12 +21,14 @@ export function SignIn() {
     const [focusSenha, setFocusSenha] = useState(false)
     const [erro, setErro] = useState(false)
     const [mensagemErro, setMensagemmErro] = useState('')
+    const [loading, setLoading] = useState(false)
 
     const navigation = useNavigation()
 
     const emailInput = createRef()
 
     useEffect(() => {
+        setLoading(true)
         const auth = getAuth();
         onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -34,7 +36,9 @@ export function SignIn() {
 
                 navigation.replace("Home")
                 console.log(uid)
+                setLoading(false)
             } else {
+                setLoading(false)
                 console.log("nenhum usuario logado")
             }
         });
@@ -65,14 +69,14 @@ export function SignIn() {
             })
             .catch((error) => {
                 const errorCode = error.code;
-                
-                if(errorCode === "auth/invalid-email"){
+
+                if (errorCode === "auth/invalid-email") {
                     setErro(true)
                     setMensagemmErro("Oops! Email invalido")
-                }else if(errorCode === "auth/user-not-found"){
+                } else if (errorCode === "auth/user-not-found") {
                     setErro(true)
                     setMensagemmErro("Oops! Usuario não encontrado")
-                }else if(errorCode === "auth/wrong-password"){
+                } else if (errorCode === "auth/wrong-password") {
                     setErro(true)
                     setMensagemmErro("Oops! Senha esta incorreta")
                     setIsLoading(false)
@@ -87,92 +91,99 @@ export function SignIn() {
     }
 
     return (
-        <View style={style.container}>
-            <StatusBar backgroundColor="white" />
+        <>
+            {loading ?
+                <View style={style.loading}>
+                    <ActivityIndicator size={100} color="#40bfff" />
+                </View> :
+                <View style={style.container}>
+                    <StatusBar backgroundColor="white" />
 
-            <TopoAuth title={"Bem-vindo ao E-comm"} subtitle={"Sign in to continue"} />
+                    <TopoAuth title={"Bem-vindo ao E-comm"} subtitle={"Sign in to continue"} />
 
-            <View style={style.containerLogin}>
-                <Stack>
-                    <View>
-                        <TextInput
-                            ref={emailInput}
-                            style={[style.input, { borderColor: focusEmail ? "#40BFFF" : "#EBF0FF" }]}
-                            onChangeText={setEmail}
-                            value={email}
-                            placeholder="Your Email"
-                            keyboardType="email-address"
-                            onFocus={() => setFocusEmail(true)}
-                            onBlur={() => setFocusEmail(false)}
-                        />
-                        <MaterialCommunityIcons style={style.icon} name="email-outline" size={24} color={focusEmail ? "#40BFFF" : "#9098B1"} />
+                    <View style={style.containerLogin}>
+                        <Stack>
+                            <View>
+                                <TextInput
+                                    ref={emailInput}
+                                    style={[style.input, { borderColor: focusEmail ? "#40BFFF" : "#EBF0FF" }]}
+                                    onChangeText={setEmail}
+                                    value={email}
+                                    placeholder="Your Email"
+                                    keyboardType="email-address"
+                                    onFocus={() => setFocusEmail(true)}
+                                    onBlur={() => setFocusEmail(false)}
+                                />
+                                <MaterialCommunityIcons style={style.icon} name="email-outline" size={24} color={focusEmail ? "#40BFFF" : "#9098B1"} />
+                            </View>
+                            {
+                                erro === true && mensagemErro != "Oops! Senha esta incorreta" ? <MessageError message={mensagemErro} /> :
+                                    <View></View>
+                            }
+                            <View>
+                                <TextInput
+                                    style={[style.input, { borderColor: focusSenha ? "#40BFFF" : "#EBF0FF" }]}
+                                    onChangeText={setSenha}
+                                    value={senha}
+                                    placeholder="Password"
+                                    secureTextEntry={true}
+                                    onFocus={() => setFocusSenha(true)}
+                                    onBlur={() => setFocusSenha(false)}
+                                />
+                                <MaterialCommunityIcons style={style.icon} name="account-key-outline" size={24} color={focusSenha ? "#40BFFF" : "#9098B1"} />
+                            </View>
+                            {
+                                erro === true && mensagemErro === "Oops! Senha esta incorreta" ? <MessageError message={mensagemErro} /> :
+                                    <View></View>
+                            }
+                            <TouchableOpacity
+                                style={[style.botao, { opacity: email === '' || senha === '' || isLoading ? 0.5 : 1 }]}
+                                onPress={handleSignIn}
+                                disabled={email === '' || senha === '' || isLoading ? true : false}
+                            >
+
+                                {
+                                    isLoading ?
+                                        <ActivityIndicator size="large" color="white" /> :
+                                        <Text style={style.textBotao}>Sign in</Text>
+                                }
+                            </TouchableOpacity>
+
+                        </Stack>
                     </View>
-                    {
-                        erro === true && mensagemErro != "Oops! Senha esta incorreta" ?  <MessageError message={mensagemErro}/> :
-                        <View></View>
-                    }
-                    <View>
-                        <TextInput
-                            style={[style.input, { borderColor: focusSenha ? "#40BFFF" : "#EBF0FF" }]}
-                            onChangeText={setSenha}
-                            value={senha}
-                            placeholder="Password"
-                            secureTextEntry={true}
-                            onFocus={() => setFocusSenha(true)}
-                            onBlur={() => setFocusSenha(false)}
-                        />
-                        <MaterialCommunityIcons style={style.icon} name="account-key-outline" size={24} color={focusSenha ? "#40BFFF" : "#9098B1"} />
+
+                    <View style={style.orLine}>
+                        <View style={style.line} />
+                        <Text style={style.textOr}>OR</Text>
+                        <View style={style.line} />
                     </View>
-                    {
-                        erro === true && mensagemErro === "Oops! Senha esta incorreta" ? <MessageError message={mensagemErro}/> :
-                        <View></View>
-                    }
-                    <TouchableOpacity 
-                        style={[style.botao, {opacity: email === '' || senha === '' || isLoading ? 0.5 : 1}]} 
-                        onPress={handleSignIn} 
-                        disabled={email === '' || senha === '' || isLoading ? true : false }
-                    >
 
-                        {
-                            isLoading ?
-                                <ActivityIndicator size="large" color="white" /> :
-                                <Text style={style.textBotao}>Sign in</Text>
-                        }
-                    </TouchableOpacity>
+                    <View style={{ marginHorizontal: 16 }}>
+                        <TouchableOpacity style={style.botaoLogarRedes}>
+                            <Text style={style.textBotaoRedes}>Login with Google</Text>
+                            <Image style={style.logoBotao} source={require('../../assets/Google.png')} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={style.botaoLogarRedes}>
+                            <Text style={style.textBotaoRedes}>Login with facebook</Text>
+                            <Image style={style.logoBotao} source={require('../../assets/Facebook.png')} />
+                        </TouchableOpacity>
+                    </View>
 
-                </Stack>
-            </View>
+                    <View style={{ alignItems: 'center', marginTop: 20 }}>
+                        <TouchableOpacity>
+                            <Text style={{ color: "#40BFFF", fontSize: 16, fontWeight: 'bold' }}>Forgot Password?</Text>
+                        </TouchableOpacity>
 
-            <View style={style.orLine}>
-                <View style={style.line} />
-                <Text style={style.textOr}>OR</Text>
-                <View style={style.line} />
-            </View>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 10 }}>
+                            <Text style={{ color: '#9098B1' }}>Don’t have a account?</Text>
+                            <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+                                <Text style={{ color: '#40BFFF' }}> Register</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
 
-            <View style={{ marginHorizontal: 16 }}>
-                <TouchableOpacity style={style.botaoLogarRedes}>
-                    <Text style={style.textBotaoRedes}>Login with Google</Text>
-                    <Image style={style.logoBotao} source={require('../../assets/Google.png')} />
-                </TouchableOpacity>
-                <TouchableOpacity style={style.botaoLogarRedes}>
-                    <Text style={style.textBotaoRedes}>Login with facebook</Text>
-                    <Image style={style.logoBotao} source={require('../../assets/Facebook.png')} />
-                </TouchableOpacity>
-            </View>
-
-            <View style={{ alignItems: 'center', marginTop: 20 }}>
-                <TouchableOpacity>
-                    <Text style={{ color: "#40BFFF", fontSize: 16, fontWeight: 'bold' }}>Forgot Password?</Text>
-                </TouchableOpacity>
-
-                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 10 }}>
-                    <Text style={{ color: '#9098B1' }}>Don’t have a account?</Text>
-                    <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-                        <Text style={{ color: '#40BFFF' }}> Register</Text>
-                    </TouchableOpacity>
                 </View>
-            </View>
-
-        </View>
+            }
+        </>
     )
 }

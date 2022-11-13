@@ -9,6 +9,11 @@ export const styles = () => {
             backgroundColor: 'white',
 
         },
+        loading: {
+            flex: 1,
+            justifyContent: "center",
+            backgroundColor: 'white',
+        },
         containerLogin: {
             marginHorizontal: 16,
         },
@@ -47,7 +52,7 @@ export const styles = () => {
             color: 'white',
             fontWeight: 'bold',
             fontSize: 16
-        }, 
+        },
         orLine: {
             marginTop: 20,
             marginBottom: 10,
@@ -62,8 +67,8 @@ export const styles = () => {
             color: "#9098B1"
         },
         line: {
-            width: '41%', 
-            height: 2, 
+            width: '41%',
+            height: 2,
             backgroundColor: '#EBF0FF'
         },
         botaoLogarRedes: {
@@ -73,7 +78,7 @@ export const styles = () => {
             borderColor: '#EBF0FF',
             borderRadius: 5,
             borderWidth: 2
-        }, 
+        },
         logoBotao: {
             position: 'absolute',
             width: 40,

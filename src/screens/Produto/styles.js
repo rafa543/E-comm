@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, StatusBar, Dimensions } from 'react-native';
+import Constants from 'expo-constants';
 const { width } = Dimensions.get('window')
 
 export const styles = () => {
@@ -8,10 +9,11 @@ export const styles = () => {
             flex: 1,
             marginTop: StatusBar.currentHeight || 0,
             backgroundColor: 'white',
-            // paddingBottom: 60
-            // paddingBottom: 70
-            // marginTop:
-            // paddingTop: 30,
+        },
+        loading: {
+            flex: 1,
+            justifyContent: "center",
+            backgroundColor: 'white',
         },
         header: {
             flexDirection: 'row',
@@ -116,6 +118,6 @@ export const styles = () => {
             width: 70,
             height: 70,
         },
-        
+
     })
 }

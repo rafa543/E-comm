@@ -1,6 +1,6 @@
 import { getAuth } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { FlatList } from "react-native";
+import { ActivityIndicator, FlatList, Text } from "react-native";
 import api from "../../services/api";
 import { DATA } from "../../utils/data";
 import { CardProduct } from "../CardProduct";
@@ -16,7 +16,7 @@ export function ListProduct({ horizontalOrVertical }) {
         try {
             const response = await api.get('/produtos');
             const list = response.data;
-            
+
             setProdutos(list)
 
         } catch (err) {
@@ -28,7 +28,7 @@ export function ListProduct({ horizontalOrVertical }) {
         try {
             const response = await api.get('/carrinho');
             const list = response.data;
-            
+
             setProdutos(list)
 
         } catch (err) {
@@ -37,33 +37,44 @@ export function ListProduct({ horizontalOrVertical }) {
     }
 
     useEffect(() => {
-        if(horizontalOrVertical === "favorites"){
+        if (horizontalOrVertical === "favorites") {
             loadFavorites()
-        }else {
+        } else {
             loadProducts()
         }
     }, [])
 
     if (horizontal) {
         return (
-            <FlatList
-                data={produtos}
-                style={style.container}
-                showsHorizontalScrollIndicator={false}
-                horizontal renderItem={renderItem}
-                keyExtractor={item => item.id} />
+            <>
+                {
+                    !produtos ? <ActivityIndicator size="large" color="#40bfff" />
+                        : <FlatList
+                            data={produtos}
+                            style={style.container}
+                            showsHorizontalScrollIndicator={false}
+                            horizontal renderItem={renderItem}
+                            keyExtractor={item => item.id} />
+                }
+            </>
         )
     } else if (horizontalOrVertical == "vertical") {
 
         return (
-            <FlatList
-                data={DATA.reverse()}
-                style={[style.container, { marginRight: 0, }]}
-                showsHorizontalScrollIndicator={false}
-                numColumns={2}
-                renderItem={renderItem}
-                keyExtractor={item => item.id}
-            />
+            <>
+                {
+                    !produtos ? <ActivityIndicator size="large" color="#40bfff" />
+                        :
+                        <FlatList
+                            data={DATA.reverse()}
+                            style={[style.container, { marginRight: 0, }]}
+                            showsHorizontalScrollIndicator={false}
+                            numColumns={2}
+                            renderItem={renderItem}
+                            keyExtractor={item => item.id}
+                        />
+                }
+            </>
         )
     } else {
         return (
