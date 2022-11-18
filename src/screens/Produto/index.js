@@ -15,15 +15,16 @@ export function Produto() {
     const id = route.params
     const navigation = useNavigation()
     const [produto, setProduto] = useState([{}])
+    const [nomeProduto, setNomeProduto] = useState("")
     const [botaoSelected, selectBotaoSelected] = useState('')
     const [botaoSizeSelected, selectBotaoSizeSelected] = useState('')
     const [loading, setLoading] = useState(false)
 
-    function setarNome() {
-        // if (produto.title.length >= 25) {
-        //     return produto.title.slice(0, 25) + "..."
-        // }
-        // return produto.title
+    function setarNome(title) {
+        if (title.length >= 25) {
+            return title.slice(0, 25) + "..."
+        }
+        return title
     }
 
     function voltar() {
@@ -41,8 +42,9 @@ export function Produto() {
     async function loadProducts() {
         try {
             const response = await api.get(`/produtos/${id}`);
-            const list = response.data;
+            const list = response.data
 
+            setNomeProduto(setarNome(list.title))
             setProduto(list)
             setLoading(false)
         } catch (err) {
@@ -71,7 +73,7 @@ export function Produto() {
                                     <TouchableOpacity onPress={voltar}>
                                         <AntDesign name="left" size={24} color="#9098B1" />
                                     </TouchableOpacity>
-                                    <Text style={style.nomeProduto}>{produto.title}</Text>
+                                    <Text style={style.nomeProduto}>{nomeProduto}</Text>
                                 </View>
                                 <View style={style.setaNome}>
                                     <TouchableOpacity style={style.busca}>

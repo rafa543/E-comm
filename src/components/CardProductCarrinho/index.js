@@ -14,7 +14,6 @@ export function CardProductCarrinho({ produtos }) {
                 produtos?.map((i) => (
                     <View style={style.container}>
                         <View>
-                            {/* <Image style={style.image} source={require('../../assets/produtos/tenis1.jpg')} /> */}
                             <Image style={style.image} source={{uri: i.image}} />
                         </View>
                         <View>

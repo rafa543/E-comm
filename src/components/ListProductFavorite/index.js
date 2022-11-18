@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import api from "../../services/api";
-import { Feather } from '@expo/vector-icons'; 
+import { Feather } from '@expo/vector-icons';
 import { styles } from "./styles"
 const style = styles()
 
@@ -17,13 +17,9 @@ const Item = ({ data }) => (
             <Text style={style.oldPrice}>{data.item.oldPreco}</Text>
             <Text style={style.descont}>24%Off</Text>
 
-            {
-                data.item.favorito ?
-                    <TouchableOpacity>
-                        <Feather name="trash" size={24} color="#9098B1" />
-                    </TouchableOpacity> :
-                    null
-            }
+            <TouchableOpacity>
+                <Feather name="trash" size={24} color="#9098B1" />
+            </TouchableOpacity>
 
         </View>
     </TouchableOpacity>
@@ -31,7 +27,7 @@ const Item = ({ data }) => (
 
 export function ListProductFavorite() {
     const [data, setData] = useState()
-    
+
 
     const renderItem = (data) => (
         <Item data={data} />
@@ -46,7 +42,7 @@ export function ListProductFavorite() {
         } catch (err) {
             console.error(err);
         }
-    }   
+    }
 
     function handleProduct(data) {
         navigation.navigate('Produto', data.id)

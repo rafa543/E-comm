@@ -49,8 +49,47 @@ export const styles = () => {
             width: 26,
             height: 26
         },
+        containerBusca: {
+            marginHorizontal: 16
+        },
+        itemBusca: {
+            height: 50,
+            fontSize: 16,
+            color: "#9098B1"
+        },  
         text: {
             color: '#9098b1',
-        }
+        },
+        header: {
+            marginHorizontal: 18,
+            marginTop: 20,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: 20
+        },
+        input: {
+            width: 263,
+            height: 46,
+            borderWidth: 1,
+            borderColor: "#d9d9d9",
+            borderRadius: 5,
+            paddingLeft: 45
+        },
+        iconSerch: {
+            width: 18,
+            height: 18,
+            position: 'absolute',
+            top: 15,
+            left: 15
+        },
+        favorite: {
+            width: 25,
+            height: 25
+        },
+        notification: {
+            width: 25,
+            height: 25
+        },
     })
 }

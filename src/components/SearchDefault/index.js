@@ -18,13 +18,15 @@ export function SearchDefault() {
             // An error happened.
         });
     }
-    
+
     return (
         <View style={style.header}>
             <View>
                 <TextInput
                     style={style.input}
                     placeholder="Search Product"
+                    onFocus={() => console.log(true)}
+                    onBlur={() => console.log(false)}
                 />
                 <Image style={style.iconSerch} source={require('../../assets/Group.png')} />
             </View>
